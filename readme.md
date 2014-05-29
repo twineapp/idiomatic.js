@@ -1296,14 +1296,14 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 12. JSON Styles
 
   JSON is used heavily throughout the application, all JSONs shoudl conform to the followiing:
-  - camelCase property keys
-  - Avoid extensive of nesting of objects when unnecessary
-  - No Comments
-  - Use double quotes
-  - Choose meaningful property names that can easily be interpreted by others
-  - Use Singular and Plural key names correctly
+  - **Use** camelCase property keys
+  - **Avoid** extensive of nesting of objects when unnecessary
+  - **No Comments**
+  - **Use** double quotes
+  - **Use** meaningful property names that can easily be interpreted by others
+  - **Use** Singular and Plural key names correctly
   - If a property is null or has an empty value, consider removing it from the JSON
-  - Do not use reserved JavaScript keywords for property names
+  - **Do not use** reserved JavaScript keywords for property names
 
   ### Reserved keywords
   ```
