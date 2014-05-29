@@ -260,7 +260,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.1.3
     // var statements should always be in the beginning of their respective scope (function).
-    
+
 
     // Bad
     function foo() {
@@ -278,10 +278,10 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       // all statements after the variables declarations.
     }
-    
+
     // 2.B.1.4
     // const and let, from ECMAScript 6, should likewise be at the top of their scope (block).
-    
+
     // Bad
     function foo() {
       let foo,
@@ -1025,7 +1025,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     ```
 
     As a last resort, create an alias to `this` using `self` as an Identifier. This is extremely bug prone and should be avoided whenever possible.
-    
+
     Usage of aliases should only happen when it is absolutely necessary to, and where _.bind (apply or call) can not overcome a scope constraint. An example of this is the success callback of an ajax request. If you find that you have to use an alias, evaluate your code and decide if there is a way that you can alter it to not require an alias.
 
     ```javascript
@@ -1228,71 +1228,59 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
 8. <a name="native">Native & Host Objects</a>
 
-    The basic principle here is:
 
-    ### Don't do stupid shit and everything will be ok.
-
-    To reinforce this concept, please watch the following presentation:
-
-    #### “Everything is Permitted: Extending Built-ins” by Andrew Dupont (JSConf2011, Portland, Oregon)
-
-    <iframe src="http://blip.tv/play/g_Mngr6LegI.html" width="480" height="346" frameborder="0" allowfullscreen></iframe><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#g_Mngr6LegI" style="display:none"></embed>
-
-    http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542
-    
-    To elaborate on this, you should **never** alter, override  or otherwise change native JavaScript functions, properties or objects. 
+    To elaborate on this, you should **never** alter, override  or otherwise change native JavaScript functions, properties or objects.
 
 
-9. <a name="comments">Comments</a>
+9. JSDoc Documentation
 
-10. JSDoc Documentation
- 
-  The client-side libraries are currently being set up to use JSDoc to generate comprehensive API documentation. In order to support this, you must accurately describe your code using multi-line JSDoc commenting structure.
+    The client-side libraries are currently being set up to use JSDoc to generate comprehensive API documentation. In order to support this, you must accurately describe your code using multi-line JSDoc commenting structure.
 
-  ```
-  // An Example function documentation
-  
-  /**
-   * Handles doing some stuff for me
-   * 
-   * @param {int} The first argument
-   * @param {string} The second argument
-   * @return {int} The result of the function
-   */
-  var myFunction = function ( argOne, argTwo ) {
-    // do something
-    return result;
-  }
-
-  // An Example object documentation
-  
-  /**
-   * Contains a bunch of things I need
-   *
-   * @namespace objOfStuff
-   * 
-   * @property someVariable {string} Contains my stuff 
-   */
-   var objOfStuff = {
-    someVariable: "itsValue",
+    ```
+    // An Example function documentation
 
     /**
-     * A function that acts on stuff
-     * 
-     * @method aFunction
-     * @memberOf objOfStuff
-     * 
-     * @param argOne {string} The first argument to the function
+     * Handles doing some stuff for me
+     *
+     * @param {int} The first argument
+     * @param {string} The second argument
+     * @return {int} The result of the function
      */
-    aFunction: function ( argOne ) {
-    
+    var myFunction = function ( argOne, argTwo ) {
+      // do something
+      return result;
     }
-   }
+
+    // An Example object documentation
+
+    /**
+     * Contains a bunch of things I need
+     *
+     * @namespace objOfStuff
+     *
+     * @property someVariable {string} Contains my stuff
+     */
+     var objOfStuff = {
+       someVariable: "itsValue",
+
+       /**
+        * A function that acts on stuff
+        *
+        * @method aFunction
+        * @memberOf objOfStuff
+        *
+        * @param argOne {string} The first argument to the function
+        */
+      aFunction: function ( argOne ) {
+
+      }
+    }
    ```
-   
+
    Most modern IDEs can be configured to insert documentation or generate comment docs strings on the fly when the string "/**" is entere then return. Check your IDE's plugin page to see if there are any available for your editor.
 
-11. Comments
+
+10. <a name="comments">Comments</a>
 
     #### Single line above the code that is subject
     #### Multiline is good
@@ -1300,11 +1288,12 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     #### JSDoc style is good, but requires a significant time investment
 
 
-12. <a name="language">One Language Code</a>
+11. <a name="language">One Language Code</a>
 
     Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
 
-13. JSON Styles
+
+12. JSON Styles
 
   JSON is used heavily throughout the application, all JSONs shoudl conform to the followiing:
   - camelCase property keys
@@ -1315,7 +1304,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
   - Use Singular and Plural key names correctly
   - If a property is null or has an empty value, consider removing it from the JSON
   - Do not use reserved JavaScript keywords for property names
-  
+
   ### Reserved keywords
   ```
 abstract
