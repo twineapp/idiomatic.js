@@ -149,7 +149,6 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 1. <a name="whitespace">Whitespace</a>
   - Never mix spaces and tabs.
   - When beginning a project, before you write any code, choose between soft indents (spaces) or real tabs, consider this **law**.
-      - For readability, I always recommend setting your editor's indent size to two characters &mdash; this means two spaces or two spaces representing a real tab.
   - If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
       - Enforced consistency
       - Eliminating end of line whitespace
@@ -428,13 +427,6 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     ```
 
-    E. Quotes
-
-    Whether you prefer single or double shouldn't matter, there is no difference in how JavaScript parses them. What **ABSOLUTELY MUST** be enforced is consistency. **Never mix quotes in the same project. Pick one style and stick with it.**
-
-    F. End of Lines and Empty Lines
-
-    Whitespace can ruin diffs and make changesets impossible to read. Consider incorporating a pre-commit hook that removes end-of-line whitespace and blanks spaces on empty lines automatically.
 
 3. <a name="type">Type Checking (Courtesy jQuery Core Style Guidelines)</a>
 
@@ -1030,45 +1022,11 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
       }, this), opts.freq || 100 );
     }
 
-    // eg. jQuery.proxy
-    function Device( opts ) {
-
-      this.value = null;
-
-      stream.read( opts.path, jQuery.proxy(function( data ) {
-
-        this.value = data;
-
-      }, this) );
-
-      setInterval( jQuery.proxy(function() {
-
-        this.emit("event");
-
-      }, this), opts.freq || 100 );
-    }
-
-    // eg. dojo.hitch
-    function Device( opts ) {
-
-      this.value = null;
-
-      stream.read( opts.path, dojo.hitch( this, function( data ) {
-
-        this.value = data;
-
-      }) );
-
-      setInterval( dojo.hitch( this, function() {
-
-        this.emit("event");
-
-      }), opts.freq || 100 );
-    }
-
     ```
 
     As a last resort, create an alias to `this` using `self` as an Identifier. This is extremely bug prone and should be avoided whenever possible.
+    
+    Usage of aliases should only happen when it is absolutely necessary to, and where _.bind (apply or call) can not overcome a scope constraint. An example of this is the success callback of an ajax request. If you find that you have to use an alias, evaluate your code and decide if there is a way that you can alter it to not require an alias.
 
     ```javascript
 
@@ -1281,9 +1239,60 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     <iframe src="http://blip.tv/play/g_Mngr6LegI.html" width="480" height="346" frameborder="0" allowfullscreen></iframe><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#g_Mngr6LegI" style="display:none"></embed>
 
     http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542
+    
+    To elaborate on this, you should **never** alter, override  or otherwise change native JavaScript functions, properties or objects. 
 
 
 9. <a name="comments">Comments</a>
+
+10. JSDoc Documentation
+ 
+  The client-side libraries are currently being set up to use JSDoc to generate comprehensive API documentation. In order to support this, you must accurately describe your code using multi-line JSDoc commenting structure.
+
+  ```
+  // An Example function documentation
+  
+  /**
+   * Handles doing some stuff for me
+   * 
+   * @param {int} The first argument
+   * @param {string} The second argument
+   * @return {int} The result of the function
+   */
+  var myFunction = function ( argOne, argTwo ) {
+    // do something
+    return result;
+  }
+
+  // An Example object documentation
+  
+  /**
+   * Contains a bunch of things I need
+   *
+   * @namespace objOfStuff
+   * 
+   * @property someVariable {string} Contains my stuff 
+   */
+   var objOfStuff = {
+    someVariable: "itsValue",
+
+    /**
+     * A function that acts on stuff
+     * 
+     * @method aFunction
+     * @memberOf objOfStuff
+     * 
+     * @param argOne {string} The first argument to the function
+     */
+    aFunction: function ( argOne ) {
+    
+    }
+   }
+   ```
+   
+   Most modern IDEs can be configured to insert documentation or generate comment docs strings on the fly when the string "/**" is entere then return. Check your IDE's plugin page to see if there are any available for your editor.
+
+11. Comments
 
     #### Single line above the code that is subject
     #### Multiline is good
@@ -1291,9 +1300,42 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     #### JSDoc style is good, but requires a significant time investment
 
 
-10. <a name="language">One Language Code</a>
+12. <a name="language">One Language Code</a>
 
     Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
+
+13. JSON Styles
+
+  JSON is used heavily throughout the application, all JSONs shoudl conform to the followiing:
+  - camelCase property keys
+  - Avoid extensive of nesting of objects when unnecessary
+  - No Comments
+  - Use double quotes
+  - Choose meaningful property names that can easily be interpreted by others
+  - Use Singular and Plural key names correctly
+  - If a property is null or has an empty value, consider removing it from the JSON
+  - Do not use reserved JavaScript keywords for property names
+  
+  ### Reserved keywords
+  ```
+abstract
+boolean break byte
+case catch char class const continue
+debugger default delete do double
+else enum export extends
+false final finally float for function
+goto
+if implements import in instanceof int interface
+let long
+native new null
+package private protected public
+return
+short static super switch synchronized
+this throw throws transient true try typeof
+var volatile void
+while with
+yield
+```
 
 ## Appendix
 
