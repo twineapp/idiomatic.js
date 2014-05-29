@@ -127,8 +127,10 @@ Projects _must_ include some form of unit, reference, implementation or function
  * [Naming](#naming)
  * [Misc](#misc)
  * [Native & Host Objects](#native)
+ * [JSDoc](#jsdoc)
  * [Comments](#comments)
  * [One Language Code](#language)
+ * [JSON Styles](#json)
 
 
 
@@ -1232,7 +1234,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     To elaborate on this, you should **never** alter, override  or otherwise change native JavaScript functions, properties or objects.
 
 
-9. JSDoc Documentation
+9. <a name="jsdoc">JSDoc Documentation</a>
 
     The client-side libraries are currently being set up to use JSDoc to generate comprehensive API documentation. In order to support this, you must accurately describe your code using multi-line JSDoc commenting structure.
 
@@ -1293,7 +1295,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
 
 
-12. JSON Styles
+12. <a name="json">JSON Styles</a>
 
   JSON is used heavily throughout the application, all JSONs shoudl conform to the followiing:
   - **Use** camelCase property keys
