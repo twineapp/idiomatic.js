@@ -1,4 +1,4 @@
-# Principles of Writing Consistent, Idiomatic JavaScript
+# Principles of Writing Consistent, Idiomatic JavaScript (Twine Edition)
 
 
 ## This is a living document and new ideas for improving the code around us are always welcome. Contribute: fork, clone, branch, commit, push, pull request.
@@ -150,7 +150,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
 1. <a name="whitespace">Whitespace</a>
   - Never mix spaces and tabs.
-  - When beginning a project, before you write any code, choose between soft indents (spaces) or real tabs, consider this **law**.
+  - Use real tabs for spacing (not soft indents), this is the **law**
   - If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
       - Enforced consistency
       - Eliminating end of line whitespace
